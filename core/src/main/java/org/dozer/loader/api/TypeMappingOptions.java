@@ -83,6 +83,14 @@ public final class TypeMappingOptions {
     };
   }
 
+  public static TypeMappingOption byPassAlreadyMapped(final boolean value) {
+      return new TypeMappingOption() {
+          public void apply(DozerBuilder.MappingBuilder fieldMappingBuilder) {
+              fieldMappingBuilder.byPassAlreadyMapped(value);
+          }
+      };
+  }
+
   public static TypeMappingOption stopOnErrors() {
     return stopOnErrors(true);
   }

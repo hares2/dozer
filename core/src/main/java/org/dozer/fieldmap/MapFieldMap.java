@@ -46,6 +46,7 @@ public class MapFieldMap extends FieldMap {
     setCopyByReference(fieldMap.isCopyByReference());
     setCustomConverter(fieldMap.getCustomConverter());
     setCustomConverterId(fieldMap.getCustomConverterId());
+    setByPassAlreayMappedValue(fieldMap.isByPassAlreayMappedValue());
     setCustomConverterParam(fieldMap.getCustomConverterParam());
     setDestField(fieldMap.getDestField());
     setDestHintContainer(fieldMap.getDestHintContainer());

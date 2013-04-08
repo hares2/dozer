@@ -81,6 +81,7 @@ public class XMLParser implements MappingsSource<Document> {
   private static final String TYPE_ATTRIBUTE = "type";
   private static final String NAME_ATTRIBUTE = "name";
   private static final String COPY_BY_REFERENCE_ATTRIBUTE = "copy-by-reference";
+  private static final String BYPASS_ALREADY_MAPPED_VALUE_ATTRIBUTE = "bypass-already-mapped";
   private static final String THE_SET_METHOD_ATTRIBUTE = "set-method";
   private static final String THE_GET_METHOD_ATTRIBUTE = "get-method";
   private static final String STOP_ON_ERRORS_ATTRIBUTE = "stop-on-errors";
@@ -173,6 +174,9 @@ public class XMLParser implements MappingsSource<Document> {
     }
     if (StringUtils.isNotEmpty(getAttribute(ele, MAPID_ATTRIBUTE))) {
       definitionBuilder.mapId(getAttribute(ele, MAPID_ATTRIBUTE));
+    }
+    if (StringUtils.isNotEmpty(getAttribute(ele, BYPASS_ALREADY_MAPPED_VALUE_ATTRIBUTE))) {
+      definitionBuilder.byPassAlreadyMapped(Boolean.valueOf(getAttribute(ele, BYPASS_ALREADY_MAPPED_VALUE_ATTRIBUTE)));
     }
     if (StringUtils.isNotEmpty(getAttribute(ele, TYPE_ATTRIBUTE))) {
       String mappingDirection = getAttribute(ele, TYPE_ATTRIBUTE);
@@ -269,6 +273,9 @@ public class XMLParser implements MappingsSource<Document> {
 
     if (StringUtils.isNotEmpty(getAttribute(ele, COPY_BY_REFERENCE_ATTRIBUTE))) {
       fieldMapBuilder.copyByReference(BooleanUtils.toBoolean(getAttribute(ele, COPY_BY_REFERENCE_ATTRIBUTE)));
+    }
+    if (StringUtils.isNotEmpty(getAttribute(ele, BYPASS_ALREADY_MAPPED_VALUE_ATTRIBUTE))) {
+      fieldMapBuilder.byPassAlreadyMappedValue(BooleanUtils.toBoolean(getAttribute(ele, BYPASS_ALREADY_MAPPED_VALUE_ATTRIBUTE)));
     }
     if (StringUtils.isNotEmpty(getAttribute(ele, MAPID_ATTRIBUTE))) {
       fieldMapBuilder.mapId(getAttribute(ele, MAPID_ATTRIBUTE));

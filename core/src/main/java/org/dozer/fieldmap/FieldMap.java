@@ -66,6 +66,7 @@ public abstract class FieldMap implements Cloneable {
   private String customConverterParam;
   private RelationshipType relationshipType;
   private boolean removeOrphans;
+  private boolean byPassAlreayMappedValue;
 
   private final ConcurrentMap<Class<?>, DozerPropertyDescriptor> srcPropertyDescriptorMap = new ConcurrentHashMap<Class<?>, DozerPropertyDescriptor>(); // For Caching Purposes
   private final ConcurrentMap<Class<?>, DozerPropertyDescriptor> destPropertyDescriptorMap = new ConcurrentHashMap<Class<?>, DozerPropertyDescriptor>();
@@ -474,7 +475,15 @@ public abstract class FieldMap implements Cloneable {
     return RelationshipType.NON_CUMULATIVE.equals(relationshipType);
   }
 
-  @Override
+  public boolean isByPassAlreayMappedValue() {
+      return byPassAlreayMappedValue;
+  }
+
+  public void setByPassAlreayMappedValue(boolean byPassAlreayMappedValue) {
+      this.byPassAlreayMappedValue = byPassAlreayMappedValue;
+  }
+
+    @Override
   public String toString() {
     return new ToStringBuilder(this, ToStringStyle.MULTI_LINE_STYLE).append("source field", srcField).append("destination field",
         destField).append("type", type).append("customConverter", customConverter).append("relationshipType", relationshipType)

@@ -71,6 +71,10 @@ public final class MappingUtils {
     return Map.class.isAssignableFrom(aClass);
   }
 
+  public static boolean isByPassAlreadyMappedValue(FieldMap fieldMap) {
+     return fieldMap.isByPassAlreayMappedValue() || fieldMap.getClassMap().isByPassAlreadyMappedValue();
+  }
+
   public static void throwMappingException(Throwable e) throws MappingException {
     if (e instanceof MappingException) {
       // in this case we do not want to re-wrap an existing mapping exception
@@ -177,6 +181,7 @@ public final class MappingUtils {
     destination.setTrimStrings(source.isTrimStrings());
     destination.setDateFormat(source.getDateFormat());
     destination.setRelationshipType(source.getRelationshipType());
+    destination.setByPassAlreadyMappedValue(source.isByPassAlreadyMappedValue());
     destination.setStopOnErrors(source.isStopOnErrors());
     destination.setAllowedExceptions(source.getAllowedExceptions());
     destination.setSrcClassCreateMethod(source.getDestClassCreateMethod());

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mappings xmlns="http://dozer.sourceforge.net"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://dozer.sourceforge.net
+          http://dozer.sourceforge.net/schema/beanmapping.xsd">
+
+    <configuration></configuration>
+
+    <mapping>
+        <class-a>org.dozer.functional_tests.NonCumulativeRelationShipAndOneWayTest.ListContainer</class-a>
+        <class-b>org.dozer.functional_tests.NonCumulativeRelationShipAndOneWayTest.ListContainerDTO</class-b>
+        <field type="one-way">
+            <a>createdDate</a>
+            <b>createdDate</b>
+        </field>
+        <field type="one-way">
+            <a>modifiedDate</a>
+            <b>modifiedDate</b>
+        </field>
+        <field relationship-type="non-cumulative">
+            <a>myList</a>
+            <b>myList</b>
+            <a-hint>org.dozer.functional_tests.NonCumulativeRelationShipAndOneWayTest.AbstractListElement</a-hint>
+            <b-hint>org.dozer.functional_tests.NonCumulativeRelationShipAndOneWayTest.AbstractListElementDTO</b-hint>
+        </field>
+    </mapping>
+    <mapping bypass-already-mapped="true">
+        <class-a>org.dozer.functional_tests.NonCumulativeRelationShipAndOneWayTest.AbstractListElement</class-a>
+        <class-b>org.dozer.functional_tests.NonCumulativeRelationShipAndOneWayTest.AbstractListElementDTO</class-b>
+        <field type="one-way">
+            <a>createdDate</a>
+            <b>createdDate</b>
+        </field>
+        <field type="one-way">
+            <a>modifiedDate</a>
+            <b>modifiedDate</b>
+        </field>
+        <field>
+            <a>simpleBean</a>
+            <b>simpleBean</b>
+        </field>
+    </mapping>
+    <mapping>
+        <class-a>org.dozer.functional_tests.NonCumulativeRelationShipAndOneWayTest.ListElement</class-a>
+        <class-b>org.dozer.functional_tests.NonCumulativeRelationShipAndOneWayTest.ListElementDTO</class-b>
+        <field type="one-way">
+            <a>createdDate</a>
+            <b>createdDate</b>
+        </field>
+        <field type="one-way">
+            <a>modifiedDate</a>
+            <b>modifiedDate</b>
+        </field>
+    </mapping>
+
+</mappings>

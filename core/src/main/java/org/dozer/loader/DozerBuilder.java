@@ -100,6 +100,11 @@ public class DozerBuilder {
       return this;
     }
 
+    public MappingBuilder byPassAlreadyMapped(boolean value) {
+      classMap.setByPassAlreadyMappedValue(value);
+      return this;
+    }
+
     public MappingBuilder wildcard(Boolean value) {
       classMap.setWildcard(value);
       return this;
@@ -223,6 +228,7 @@ public class DozerBuilder {
     private HintContainer srcDeepIndexHintContainer;
     private HintContainer destDeepIndexHintContainer;
     private boolean copyByReference;
+    private boolean byPassAlreadyMappedValue;
     private String mapId;
     private String customConverter;
     private String customConverterId;
@@ -294,6 +300,10 @@ public class DozerBuilder {
       this.copyByReference = value;
     }
 
+    public void byPassAlreadyMappedValue(boolean value) {
+      this.byPassAlreadyMappedValue = value;
+    }
+
     public void mapId(String attribute) {
       this.mapId = attribute;
     }
@@ -331,6 +341,7 @@ public class DozerBuilder {
       result.setType(type);
       result.setRelationshipType(relationshipType);
       result.setRemoveOrphans(removeOrphans);
+      result.setByPassAlreayMappedValue(byPassAlreadyMappedValue);
 
       result.setSrcHintContainer(srcHintContainer);
       result.setDestHintContainer(destHintContainer);

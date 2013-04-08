@@ -52,6 +52,7 @@ public class ClassMap {
   private CustomConverterContainer customConverters;
   private String mapId;
   private RelationshipType relationshipType;
+  private boolean byPassAlreadyMappedValue;
 
   public ClassMap(Configuration globalConfiguration) {
     this.globalConfiguration = globalConfiguration;
@@ -331,7 +332,15 @@ public class ClassMap {
     return destClass;
   }
 
-  @Override
+  public boolean isByPassAlreadyMappedValue() {
+    return byPassAlreadyMappedValue;
+  }
+
+  public void setByPassAlreadyMappedValue(boolean byPassAlreadyMappedValue) {
+    this.byPassAlreadyMappedValue = byPassAlreadyMappedValue;
+  }
+
+    @Override
   public String toString() {
     return new ToStringBuilder(this, ToStringStyle.MULTI_LINE_STYLE).append("source class", getSrcClassName()).append(
         "destination class", getDestClassName()).append("map-id", mapId).toString();

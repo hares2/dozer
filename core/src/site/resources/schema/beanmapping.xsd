@@ -49,6 +49,8 @@
         custom-converters The custom converters to be registered with Dozer.
         
         copy-by-references Indicates which class types should always be copied by reference
+
+        bypass-already-mapped Indicates that dozer won't get the already mapped value from its map but get the actual object from destObject
       </documentation>
     </annotation>
     <complexType>
@@ -130,6 +132,7 @@
       <attribute name="bean-factory" type="string"/>
       <attribute name="type" type="t:type"/>
       <attribute name="relationship-type" type="t:relationship"/>
+      <attribute name="bypass-already-mapped" type="boolean"/>
       <attribute name='map-id' type='string'/>
     </complexType>
   </element>
@@ -212,6 +215,8 @@
 
         custom-converter Indicates that a specific custom converter should be used for mapping this field. Typically
         this will not be specified.
+
+        bypass-already-mapped Indicates that dozer won't get the already mapped value from its internal map but get the actual object from destObject
       </documentation>
     </annotation>
     <complexType>
@@ -228,6 +233,7 @@
       <attribute name='type' type='t:type'/>
       <attribute name='map-id' type='string'/>
       <attribute name='copy-by-reference' type='boolean'/>
+      <attribute name='bypass-already-mapped' type='boolean'/>
       <attribute name='custom-converter' type='string'/>
       <attribute name='custom-converter-id' type='string'/>
       <attribute name='custom-converter-param' type='string'/>

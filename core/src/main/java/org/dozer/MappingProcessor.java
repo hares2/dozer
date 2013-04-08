@@ -394,7 +394,7 @@ public class MappingProcessor implements Mapper {
     // infinite loop
     // In case of "this->this" mapping this rule should be omitted as processing is done on objects, which has been
     // just marked as mapped.
-    if (!(DozerConstants.SELF_KEYWORD.equals(srcFieldName) && DozerConstants.SELF_KEYWORD.equals(destFieldName))) {
+    if (!(DozerConstants.SELF_KEYWORD.equals(srcFieldName) && DozerConstants.SELF_KEYWORD.equals(destFieldName)) && !MappingUtils.isByPassAlreadyMappedValue(fieldMap)) {
       Object alreadyMappedValue = mappedFields.getMappedValue(srcFieldValue, destFieldType);
       if (alreadyMappedValue != null) {
         return alreadyMappedValue;
@@ -731,8 +731,7 @@ public class MappingProcessor implements Mapper {
       }
       prevDestEntryType = destEntryType;
 
-      if (RelationshipType.NON_CUMULATIVE.equals(fieldMap.getRelationshipType())
-          && result.contains(destValue)) {
+      if (RelationshipType.NON_CUMULATIVE.equals(fieldMap.getRelationshipType()) && result.contains(destValue)) {
         List<Object> resultAsList = new ArrayList<Object>(result);
         int index = resultAsList.indexOf(destValue);
         // perform an update if complex type - can't map strings

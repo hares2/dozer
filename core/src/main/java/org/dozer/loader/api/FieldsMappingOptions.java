@@ -37,6 +37,15 @@ public final class FieldsMappingOptions {
     };
   }
 
+  public static FieldsMappingOption byPassAlreadyMappedValue() {
+      return new FieldsMappingOption() {
+          @Override
+          public void apply(DozerBuilder.FieldMappingBuilder fieldMappingBuilder) {
+              fieldMappingBuilder.byPassAlreadyMappedValue(false);
+          }
+      };
+  }
+
   public static FieldsMappingOption customConverter(final Class<? extends CustomConverter> type) {
     return customConverter(type, null);
   }
